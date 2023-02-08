@@ -1,0 +1,217 @@
+Question-1 
+1)Do the below programs in anonymous function & IIFE
+
+a)Print odd numbers in an array
+Answer:
+var nums = [1,2,3,4,6,7];
+var odds = [];
+
+var evenNumbers = function(nums) {
+    for (var i = 0; i < nums.length; i++) {
+
+        if ((nums[i] % 2) == 1) {
+            odds.push(nums[i]);   
+        }
+    }
+}
+evenNumbers(nums);
+console.log(odds);//[1,3,7]
+
+
+b)Convert all the strings to title caps in a string array
+Answer:
+ var caps = function titleCase(string) {
+      var sentence = string.toLowerCase().split(" ");
+      for(var i = 0; i< sentence.length; i++){
+         sentence[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
+      }
+   console.log(sentence.join(" "));
+   return sentence;
+   }
+caps("hello world"); //Hello World
+
+
+c)Sum of all numbers in an array
+Answer:
+var add = function(arr) {
+    return arr.reduce((a, b) => a + b, 0);
+};
+var arr = [3, 6, 1, 5, 8];
+var sum = add(arr);
+console.log(sum);
+
+
+d)Return all the prime numbers in an array
+Answer:
+const newArray = [1, 3, 2, 5, 10];
+
+
+const myPrimeArray = newArray.filter(num => {
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) return false;
+  }
+  return num !== 1;
+});
+console.log(myPrimeArray);// [3,2,5]
+
+
+e)Return all the palindromes in an array
+Answer:
+const arr = ['carecar', 1344, 12321, 'did', 'cannot'];
+const isPalindrome = el => {
+   const str = String(el);
+   let i = 0;
+   let j = str.length - 1;
+   while(i < j) {
+      if(str[i] === str[j]) {
+         i++;
+         j--;
+      }
+      else {
+         return false;
+      }
+   }
+   return true;
+};
+const findPalindrome = arr => {
+   return arr.filter(el => isPalindrome(el));
+};
+console.log(findPalindrome(arr));
+
+
+f)Return median of two sorted arrays of same size
+Answer:
+function getMedian(ar1, ar2, n)
+{
+    var i = 0; 
+    var j = 0; 
+    var count;
+    var m1 = -1, m2 = -1;
+ 
+    
+    for (count = 0; count <= n; count++)
+    {
+        if (i == n)
+        {
+            m1 = m2;
+            m2 = ar2[0];
+            break;
+        }
+ 
+        else if (j == n)
+        {
+            m1 = m2;
+            m2 = ar1[0];
+            break;
+        }
+        if (ar1[i] <= ar2[j])
+        {
+            m1 = m2; 
+            m2 = ar1[i];
+            i++;
+        }
+        else
+        {
+            m1 = m2;
+            m2 = ar2[j];
+            j++;
+        }
+    }
+ 
+    return (m1 + m2)/2;
+}
+ 
+var ar1 = [1, 12, 15, 26, 38];
+var ar2 = [2, 13, 17, 30, 45];
+var n1 = ar1.length;
+var n2 = ar2.length;
+if (n1 == n2)
+    console.log(getMedian(ar1, ar2, n1)); //16
+else
+   console.log("Doesn't work for arrays of unequal size");
+
+
+g)Remove duplicates from an array
+Answer:
+function toUniqueArray(a){
+    var newArr = [];
+    for (var i = 0; i < a.length; i++) {
+        if (newArr.indexOf(a[i]) === -1) {
+            newArr.push(a[i]);
+        }
+    }
+  return newArr;
+}
+var colors = ["red","red","green","green","green"];
+var colorsUnique=toUniqueArray(colors); // ["red","green"]
+
+
+h)Rotate an array by k times
+Answer:
+
+var nums = [1,2,3,4];
+var rotate = function(nums, k) {
+     k = k % nums.length;
+     let i = -1;
+     while(++i < k) {
+         nums.unshift(nums.pop());
+     }
+     return nums;
+};
+console.log(rotate(nums,2));//[3,4,1,2]
+
+
+
+
+
+Question-3
+2)Do the below programs in arrow functions
+
+a)Print odd numbers in an array
+Answer:
+let arr = [1,2,3,4,5,6]
+let odd = arr.filter(n => n%2)
+console.log(odd); // [1,3,5,7]
+
+
+b)Convert all the strings to title caps in a string array
+Answer:
+var str = "foo bar baz df dsfgd dfgdsg"
+console.log(str.split(' ').map(w => w[0].toUpperCase() + w.substr(1).toLowerCase()).join(' '))
+
+
+c)Sum of all numbers in an array
+Answer:
+const arr = [1, 2, 3, 4];
+const sum = arr.reduce((a, b) => a + b, 0);
+console.log(sum) // 10
+
+
+d)Return all the prime numbers in an array
+Answer:
+
+const newArray = [1, 3, 2, 5, 10];
+const myPrimeArray = newArray.filter(num => {
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) return false;
+  }
+  return num !== 1;
+});
+console.log(myPrimeArray);//[3,2,5]
+
+
+e)Return all the palindromes in an array
+Answer:
+let arr = ["foo", "racecar", "pineapple", "porcupine", "pineenip",'pap','aaaa'];
+let palindromes = arr.filter(w => {
+  let len = w.length;
+  for (let i = 0; i < len / 2; i++) {
+    if (w[i] == w[len - i - 1]) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+});
+console.log(palindromes) //["racecar","pineenip","pap","aaaa"]
+
